@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/1.sahne.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/2.sahne,.unity
+    guid: 2b53b4fa186777c4985ac782574f1eb4
+  - enabled: 1
+    path: Assets/Scenes/3.sahne.unity
+    guid: 75596b8711894034d84cb9b0d84cc2ca
+  - enabled: 1
+    path: Assets/Scenes/4.sahne.unity
+    guid: f881dfc4d752ebd45be34a404a7df336
   m_configObjects: {}

@@ -20,8 +20,11 @@ public class OpenWithLight: MonoBehaviour
         {
             if (collectedLights > requiredLights)
             {
-                Debug.Log("çalıştı");
-                SceneManager.LoadScene(sceneId);
+                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+                // Yeni sahnenin indeksini hesapla
+                int nextSceneIndex = currentSceneIndex + 1;
+                // Yeni sahneyi yükle
+                SceneManager.LoadScene(nextSceneIndex);
             }
         }
     }

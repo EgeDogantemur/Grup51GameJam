@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Ground
   - Light
+  - enemy
+  - diken
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - dusman
   - Water
   - UI
   - 
@@ -42,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: dusman
+    uniqueID: 2810646977
     locked: 0

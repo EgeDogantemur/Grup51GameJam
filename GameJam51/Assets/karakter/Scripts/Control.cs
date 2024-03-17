@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Control : MonoBehaviour
 {
@@ -10,7 +11,11 @@ public class Control : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Animator _animator;
     private bool isGrounded;
-    public int collectedLights;
+
+    public string enemyTag = "enemy";
+    public string diken = "diken";
+
+     public string enemyLayer = "düsman";
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -21,7 +26,7 @@ public class Control : MonoBehaviour
     void Update()
     {
         float directionX = Input.GetAxisRaw("Horizontal");
-        speed = 2.0f;
+        speed = 3.0f;
         _rb.velocity = new Vector2(speed * directionX, _rb.velocity.y);
         if (isGrounded && directionX > 0)
         {
@@ -38,7 +43,7 @@ public class Control : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             _animator.SetBool("walk", false);
-            _rb.velocity = new Vector2(0f, 2f);
+            _rb.velocity = new Vector2(0f, 6f);
             _animator.SetBool("jump", true);
             isGrounded = false;
         }
@@ -51,11 +56,42 @@ public class Control : MonoBehaviour
             _animator.SetBool("jump", false);
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (other.CompareTag("Light"))
+        // Temas edilen nesnenin etiketini kontrol et
+        if (collision.CompareTag(enemyTag))
         {
-            collectedLights = 1;
+            // Sahneyi yeniden başlat
+            RestartScene();
         }
     }
+
+    // Sahneyi yeniden başlatan fonksiyon
+    private void RestartScene()
+    {
+        // Aktif sahnenin indeksini al
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // Aktif sahneyi yeniden yükle
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+     // Düşman layer'ının adı
+   
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // Temas eden nesnenin layer'ını kontrol et
+        if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
+        {
+            // Temas edilen nesneyi yok et
+            Destroy(other.gameObject);
+        }
+    }
+   
+
 }
+
+
+
