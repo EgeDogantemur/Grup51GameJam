@@ -83,7 +83,7 @@ public class Control : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Temas eden nesnenin layer'ını kontrol et
-        if (other.gameObject.layer == LayerMask.NameToLayer(enemyLayer))
+        if (other.gameObject.layer == LayerMask.NameToLayer("enemyLayer"))
         {
             // Temas edilen nesneyi yok et
             Destroy(other.gameObject);
