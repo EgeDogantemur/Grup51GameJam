@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 namespace lightNM
 {
+
     public class light : MonoBehaviour
     {
-        [SerializeField] AudioSource lightSound;
+        [SerializeField] AudioSource ses ;
         public int collectedLights = 0;
 
         private void Start()
@@ -18,9 +19,10 @@ namespace lightNM
         {
             if (other.gameObject.CompareTag("Light"))
             {
+                Debug.Log("çalıştı");
                 Destroy(other.gameObject);
                 collectedLights = 1;
-                lightSound.Play();
+                ses.Play();
 
             }
 
